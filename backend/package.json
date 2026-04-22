@@ -1,0 +1,19 @@
+{
+  "name": "luxe-store",
+  "version": "1.0.0",
+  "description": "LUXE Store - E-commerce de zapatos con microservicios",
+  "scripts": {
+    "install:all": "cd services/auth-service && npm install && cd ../product-service && npm install && cd ../cart-service && npm install && cd ../order-service && npm install && cd ../gateway && npm install",
+    "start:auth": "cd services/auth-service && npm start",
+    "start:products": "cd services/product-service && npm start",
+    "start:cart": "cd services/cart-service && npm start",
+    "start:orders": "cd services/order-service && npm start",
+    "start:gateway": "cd services/gateway && npm start",
+    "start:all": "node start-all.js",
+    "start:frontend": "node static-server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "dotenv": "^16.3.1"
+  }
+}
