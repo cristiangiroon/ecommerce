@@ -31,7 +31,6 @@ async function agregarAlCarrito(productoId, cantidad = 1, talla = null) {
 
 /**
  * Carga y renderiza el contenido del carrito de compras
-
  */
 async function cargarCarrito() {
   if (!estaAutenticado()) {
@@ -119,7 +118,6 @@ async function actualizarCantidadCarrito(itemId, nuevaCantidad) {
     eliminarDelCarrito(itemId);
     return;
   }
-
   try {
     await peticionAPI(`${CONFIG.ENDPOINTS.carrito}/item/${itemId}`, {
       method: 'PUT',

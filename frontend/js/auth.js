@@ -27,7 +27,6 @@ async function iniciarSesion(evento) {
     mostrarToast(error.message, 'error');
   }
 }
-
 /**
  * @param {Event} evento - Evento submit del formulario
  * 

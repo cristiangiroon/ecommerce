@@ -7,7 +7,6 @@
 function obtenerToken() {
   return localStorage.getItem('luxe_token');
 }
-
 /**
  * Guarda la sesión del usuario en localStorage
  * @param {string} token - Token JWT recibido del backend
@@ -44,7 +43,6 @@ function cerrarSesion() {
   navegarA('inicio');
   mostrarToast('Sesión cerrada', 'info');
 }
-
 /**
  * Obtiene los datos del usuario actual desde localStorage
  * @returns {Object|null} Objeto con datos del usuario o null si no hay sesión
