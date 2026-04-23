@@ -1,7 +1,6 @@
 /* ============================================
    Utilidades Globales
    ============================================ */
-
 /**
  * @returns {string|null} Token de autenticación o null si no existe
  */

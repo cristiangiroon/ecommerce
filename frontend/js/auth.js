@@ -9,7 +9,6 @@
  */
 async function iniciarSesion(evento) {
   evento.preventDefault();
-
   const email = document.getElementById('login-email').value.trim();
   const contrasena = document.getElementById('login-contrasena').value;
 
@@ -35,7 +34,6 @@ async function iniciarSesion(evento) {
  */
 async function registrarUsuario(evento) {
   evento.preventDefault();
-
   const nombre = document.getElementById('registro-nombre').value.trim();
   const email = document.getElementById('registro-email').value.trim();
   const telefono = document.getElementById('registro-telefono').value.trim();
