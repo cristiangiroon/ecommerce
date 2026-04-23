@@ -200,4 +200,4 @@ INSERT INTO productos (nombre, descripcion, precio, precio_oferta, categoria_id,
 -- Contraseña: admin123 (hash bcrypt)
 -- ============================================
 INSERT INTO usuarios (nombre, email, contrasena, rol) VALUES
-('Administrador', 'admin@luxestore.com', '$2b$10$YourHashedPasswordHere', 'admin');
+('Administrador', 'admin@luxestore.com', '$2b$10$iNk6GO2MWnRCpcVAdvWr7u.Ji6KM96o3W7WVpu6W.h5nZFANgjzcK', 'admin');
