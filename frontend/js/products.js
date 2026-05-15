@@ -135,8 +135,7 @@ function renderizarProductos(productos, contenedorId) {
             <span class="etiqueta-oferta">-${descuento}%</span>` : ''}
           </div>
           <div class="producto-acciones" onclick="event.stopPropagation()">
-            <button class="btn-agregar-carrito" onclick="agregarAlCarrito(${p.id})">Agregar al carrito</button>
-            <button class="btn-ver-detalle" onclick="verDetalle(${p.id})">Ver</button>
+            <button class="btn-ver-detalle" onclick="verDetalle(${p.id})" style="flex: 1;">Ver detalles</button>
           </div>
         </div>
       </div>
@@ -244,6 +243,14 @@ function cambiarCantidadDetalle(cambio) {
  * @param {number} productoId - ID del producto
  */
 function agregarAlCarritoDetalle(productoId) {
+  const tallas = document.querySelectorAll('.talla-boton');
+  
+  if (tallas.length > 0 && !tallaSeleccionada) {
+    mostrarToast('Por favor, selecciona una talla antes de agregar al carrito', 'error');
+    return;
+  }
+  
   const cantidad = parseInt(document.getElementById('detalle-cantidad').textContent);
   agregarAlCarrito(productoId, cantidad, tallaSeleccionada);
+  tallaSeleccionada = null;
 }

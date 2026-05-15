@@ -1,0 +1,318 @@
+/* ============================================
+   Efectos Adicionales y Animaciones Avanzadas
+   ============================================ */
+
+/* Efecto de partículas en el hero */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(12, 227, 232, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(252, 16, 104, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(252, 171, 16, 0.1) 0%, transparent 50%);
+  animation: particulas 20s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes particulas {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+/* Efecto de onda en botones */
+.btn-primario {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primario::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-primario:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Efecto de brillo en productos */
+.producto-tarjeta::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  transform: rotate(45deg);
+  animation: brilloProducto 3s infinite;
+}
+
+@keyframes brilloProducto {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+/* Efecto de flotación en categorías */
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.categoria-tarjeta {
+  animation: flotar 3s ease-in-out infinite;
+}
+
+.categoria-tarjeta:nth-child(1) { animation-delay: 0s; }
+.categoria-tarjeta:nth-child(2) { animation-delay: 0.2s; }
+.categoria-tarjeta:nth-child(3) { animation-delay: 0.4s; }
+.categoria-tarjeta:nth-child(4) { animation-delay: 0.6s; }
+.categoria-tarjeta:nth-child(5) { animation-delay: 0.8s; }
+
+/* Efecto de sombra dinámica */
+.producto-tarjeta:hover {
+  animation: sombraDinamica 0.5s ease forwards;
+}
+
+@keyframes sombraDinamica {
+  0% { box-shadow: var(--sombra-suave); }
+  100% { 
+    box-shadow: 
+      0 10px 40px rgba(31, 4, 65, 0.15),
+      0 0 20px rgba(12, 227, 232, 0.2);
+  }
+}
+
+/* Efecto de gradiente animado en precios */
+.precio-actual {
+  background: linear-gradient(
+    90deg,
+    var(--color-acento),
+    var(--color-naranja),
+    var(--color-acento)
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradienteAnimado 3s ease infinite;
+}
+
+@keyframes gradienteAnimado {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Efecto de escala en imágenes */
+.producto-imagen,
+.carrito-item-imagen {
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Efecto de parpadeo en badge */
+@keyframes parpadeo {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.badge-carrito {
+  animation: pulse 2s infinite, parpadeo 1.5s infinite;
+}
+
+/* Efecto de rotación en iconos */
+.btn-icono:hover {
+  animation: rotarIcono 0.5s ease;
+}
+
+@keyframes rotarIcono {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1.1); }
+}
+
+/* Efecto de deslizamiento en enlaces del footer */
+.pie-seccion a {
+  position: relative;
+  padding-left: 0;
+  transition: padding-left 0.3s ease;
+}
+
+.pie-seccion a::before {
+  content: '→';
+  position: absolute;
+  left: -20px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.pie-seccion a:hover {
+  padding-left: 20px;
+}
+
+.pie-seccion a:hover::before {
+  left: 0;
+  opacity: 1;
+}
+
+/* Efecto de onda en el carrito */
+.carrito-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.carrito-item::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(12, 227, 232, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.carrito-item:hover::after {
+  width: 500px;
+  height: 500px;
+}
+
+/* Efecto de escritura en títulos */
+@keyframes escribir {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.seccion-titulo h2 {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: escribir 1s steps(30) 0.5s both;
+}
+
+/* Efecto de zoom suave en hover */
+.categoria-tarjeta:hover,
+.producto-tarjeta:hover {
+  animation: zoomSuave 0.3s ease forwards;
+}
+
+@keyframes zoomSuave {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1.02); }
+}
+
+/* Efecto de resplandor en botones */
+.btn-primario:hover {
+  animation: resplandor 1.5s ease infinite;
+}
+
+@keyframes resplandor {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(252, 16, 104, 0.4);
+  }
+  50% {
+    box-shadow: 
+      0 4px 15px rgba(252, 16, 104, 0.4),
+      0 0 30px rgba(252, 16, 104, 0.6),
+      0 0 50px rgba(252, 16, 104, 0.4);
+  }
+}
+
+/* Efecto de línea de carga */
+.linea-decorativa {
+  position: relative;
+  overflow: hidden;
+}
+
+.linea-decorativa::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  animation: lineaCarga 2s ease-in-out infinite;
+}
+
+@keyframes lineaCarga {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Efecto de sacudida en elementos importantes */
+@keyframes sacudir {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.etiqueta-oferta {
+  animation: bounce 2s infinite, sacudir 0.5s ease;
+}
+
+/* Efecto de desvanecimiento progresivo */
+@keyframes desvanecerProgresivo {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.producto-info > * {
+  animation: desvanecerProgresivo 0.5s ease both;
+}
+
+.producto-marca { animation-delay: 0.1s; }
+.producto-nombre { animation-delay: 0.2s; }
+.producto-categoria { animation-delay: 0.3s; }
+.producto-precios { animation-delay: 0.4s; }
+.producto-acciones { animation-delay: 0.5s; }
+
+/* Efecto de borde animado */
+@keyframes bordeAnimado {
+  0%, 100% {
+    border-color: var(--color-cyan);
+  }
+  50% {
+    border-color: var(--color-acento);
+  }
+}
+
+.campo-grupo input:focus,
+.campo-grupo select:focus,
+.campo-grupo textarea:focus {
+  animation: bordeAnimado 2s ease infinite;
+}
+
+/* Desactivar animaciones para usuarios que prefieren movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,68 @@
+/* Variables y Reset */
+:root {
+  --color-primario: #1f0441;
+  --color-acento: #fc1068;
+  --color-naranja: #fcab10;
+  --color-amarillo: #f9ce07;
+  --color-cyan: #0ce3e8;
+  --color-blanco: #ffffff;
+  --color-fondo: #f8f8fc;
+  --color-texto: #2d2d3a;
+  --color-texto-claro: #6b6b7b;
+  --color-borde: #e8e8f0;
+  --sombra-suave: 0 2px 12px rgba(31, 4, 65, 0.08);
+  --sombra-elevada: 0 8px 30px rgba(31, 4, 65, 0.12);
+  --radio-borde: 12px;
+  --transicion: all 0.3s ease;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.contenedor {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.oculto {
+  display: none !important;
+}
