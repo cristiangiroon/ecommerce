@@ -10,7 +10,8 @@
  */
 const CONFIG = {
   // URL base del backend (cambiar según entorno)
-  API_URL: 'http://localhost:3000',
+  // En producción, usar la misma URL del frontend ya que Nginx hace proxy
+  API_URL: window.location.hostname === 'localhost' ? 'http://localhost:3000' : '',
   
   // Endpoints del API REST
   ENDPOINTS: {

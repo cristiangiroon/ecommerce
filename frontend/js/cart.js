@@ -183,8 +183,7 @@ async function cargarCarritoBadge() {
 }
 
 function irACheckout() {
-  navegarA('checkout');
-  cargarResumenCheckout();
+  window.location.href = 'index.php?page=checkout';
 }
 
 async function cargarResumenCheckout() {

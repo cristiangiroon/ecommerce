@@ -5,6 +5,29 @@
   padding: 0 16px;
 }
 
+/* Botón Volver */
+.btn-volver {
+  background: transparent;
+  color: var(--color-primario);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: 2px solid var(--color-borde);
+  transition: var(--transicion);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.btn-volver:hover {
+  background: var(--color-primario);
+  color: var(--color-blanco);
+  border-color: var(--color-primario);
+  transform: translateX(-5px);
+}
+
 .formulario-tarjeta {
   background: var(--color-blanco);
   padding: 32px 24px;

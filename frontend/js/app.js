@@ -12,23 +12,27 @@ window.addEventListener('scroll', () => {
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOM Cargado');
   
-  // Cargar funciones solo si existen
+  // Cargar funciones globales
   try {
     if (typeof actualizarUIUsuario === 'function') actualizarUIUsuario();
-    if (typeof cargarCategorias === 'function') cargarCategorias();
-    if (typeof cargarMarcas === 'function') cargarMarcas();
-    if (typeof cargarDestacados === 'function') cargarDestacados();
     if (typeof cargarCarritoBadge === 'function') cargarCarritoBadge();
   } catch (error) {
     console.error('Error al cargar funciones iniciales:', error);
   }
   
-  // Soporte para navegación con teclado
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && paginaActual !== 'inicio') {
-      navegarAtras();
-    }
-  });
-  
   console.log('App inicializada correctamente');
 });
+
+// Función para toggle del menú móvil
+function toggleMenuMovil() {
+  const menu = document.getElementById('menu-movil');
+  if (menu) {
+    menu.classList.toggle('visible');
+  }
+}
+
+// Función para toggle del menú de usuario (placeholder)
+function toggleMenuUsuario() {
+  // Implementar menú desplegable de usuario si es necesario
+  console.log('Toggle menú usuario');
+}

@@ -30,8 +30,7 @@ async function procesarOrden(evento) {
 
     mostrarToast('Pedido realizado con éxito', 'exito');
     cargarCarritoBadge(); 
-    navegarA('pedidos'); 
-    cargarPedidos(); 
+    window.location.href = 'index.php?page=pedidos';
   } catch (error) {
     mostrarToast(error.message, 'error');
   }
@@ -52,7 +51,7 @@ async function cargarPedidos() {
         <div class="carrito-vacio">
           <h2>No tienes pedidos</h2>
           <p>Realiza tu primera compra en LUXE Store</p>
-          <button class="btn-primario" onclick="navegarA('catalogo')">Ir al Catálogo</button>
+          <button class="btn-primario" onclick="window.location.href='index.php?page=catalogo'">Ir al Catálogo</button>
         </div>
       `;
       return;

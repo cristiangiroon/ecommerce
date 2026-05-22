@@ -91,9 +91,7 @@ async function filtrarProductos() {
 }
 
 function filtrarPorCategoria(categoriaId) {
-  navegarA('catalogo');
-  document.getElementById('filtro-categoria').value = categoriaId;
-  filtrarProductos();
+  window.location.href = `index.php?page=catalogo&categoria=${categoriaId}`;
 }
 
 /**
@@ -149,6 +147,13 @@ function renderizarProductos(productos, contenedorId) {
 
  */
 async function verDetalle(productoId) {
+  // Si estamos en la página de catálogo o inicio, redirigir a detalle
+  const currentPage = new URLSearchParams(window.location.search).get('page');
+  if (currentPage !== 'detalle') {
+    window.location.href = `index.php?page=detalle&id=${productoId}`;
+    return;
+  }
+
   try {
     const datos = await peticionAPI(`${CONFIG.ENDPOINTS.productos}/${productoId}`);
     const p = datos.producto;
@@ -202,8 +207,6 @@ async function verDetalle(productoId) {
         </div>
       </div>
     `;
-
-    navegarA('detalle');
   } catch (error) {
     mostrarToast('Error al cargar el producto', 'error');
   }

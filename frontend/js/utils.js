@@ -25,24 +25,8 @@ function cerrarSesion() {
   localStorage.removeItem('luxe_token');
   localStorage.removeItem('luxe_usuario');
   
-  const loginEmail = document.getElementById('login-email');
-  const loginContrasena = document.getElementById('login-contrasena');
-  if (loginEmail) loginEmail.value = '';
-  if (loginContrasena) loginContrasena.value = '';
-  
-  const registroNombre = document.getElementById('registro-nombre');
-  const registroEmail = document.getElementById('registro-email');
-  const registroTelefono = document.getElementById('registro-telefono');
-  const registroContrasena = document.getElementById('registro-contrasena');
-  const registroConfirmar = document.getElementById('registro-confirmar');
-  if (registroNombre) registroNombre.value = '';
-  if (registroEmail) registroEmail.value = '';
-  if (registroTelefono) registroTelefono.value = '';
-  if (registroContrasena) registroContrasena.value = '';
-  if (registroConfirmar) registroConfirmar.value = '';
-  
   actualizarUIUsuario();
-  navegarA('inicio');
+  window.location.href = 'index.php?page=inicio';
   mostrarToast('Sesión cerrada', 'info');
 }
 
