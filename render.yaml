@@ -1,0 +1,51 @@
+services:
+  # ============================================================
+  # BACKEND - API Gateway + Microservicios
+  # ============================================================
+  - type: web
+    name: luxe-store-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm run install:all
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Base de datos PostgreSQL (configurar en el dashboard de Render)
+      - key: BD_HOST
+        sync: false
+      - key: BD_PUERTO
+        value: "5432"
+      - key: BD_NOMBRE
+        sync: false
+      - key: BD_USUARIO
+        sync: false
+      - key: BD_CONTRASENA
+        sync: false
+      # JWT
+      - key: JWT_SECRETO
+        sync: false
+      - key: JWT_EXPIRACION
+        value: 24h
+      # Puertos internos de los microservicios (comunicación localhost)
+      - key: PUERTO_AUTH
+        value: "3001"
+      - key: PUERTO_PRODUCTOS
+        value: "3002"
+      - key: PUERTO_CARRITO
+        value: "3003"
+      - key: PUERTO_ORDENES
+        value: "3004"
+
+  # ============================================================
+  # FRONTEND - SPA Vanilla JS
+  # ============================================================
+  - type: web
+    name: luxe-store-frontend
+    env: node
+    rootDir: frontend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production

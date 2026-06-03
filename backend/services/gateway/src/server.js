@@ -14,7 +14,7 @@ app.use(cors());
  */
 const crearProxy = (puerto) =>
   createProxyMiddleware({
-    target: `https://ecommerce-bw50.onrender.com`, // URL del microservicio destino
+    target: `http://localhost:${puerto}`, // URL del microservicio destino
     changeOrigin: true, // Cambia el origen del host header
   });
 
@@ -28,7 +28,7 @@ app.get('/salud', (req, res) => {
   res.json({ servicio: 'gateway', estado: 'activo', puertos: configuracion.puertos });
 });
 
-const PUERTO = configuracion.puertos.gateway;
+const PUERTO = process.env.PORT || configuracion.puertos.gateway;
 app.listen(PUERTO, () => {
   console.log(`[API Gateway] ejecutándose en puerto ${PUERTO}`);
   console.log(`  -> Auth:      http://localhost:${configuracion.puertos.auth}`);
