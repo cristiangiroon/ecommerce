@@ -14,7 +14,8 @@ app.get('*', (req, res) => {
   res.type('html').sendFile(path.join(__dirname, 'frontend/index.php'));
 });
 
-const PUERTO = parseInt(process.env.PUERTO_FRONTEND) || 8080;
-app.listen(PUERTO, () => {
-  console.log(`[Frontend] servido en http://localhost:${PUERTO}`);
+const PORT = process.env.PORT || process.env.PUERTO_FRONTEND || 8080;
+
+app.listen(PORT, () => {
+  console.log(`Frontend servido en puerto ${PORT}`);
 });
