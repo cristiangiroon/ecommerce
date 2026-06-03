@@ -4,6 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LUXE Store - Calzado Premium</title>
+
+  <!-- SEO básico -->
+  <meta name="description" content="LUXE Store — calzado premium para hombre, mujer y unisex. Deportivos, casuales y formales con envío a todo Colombia.">
+  <meta name="keywords" content="calzado premium, zapatos, deportivos, casuales, formales, Colombia, LUXE Store">
+  <meta name="author" content="LUXE Store">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://luxe-store.onrender.com/">
+
+  <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://luxe-store.onrender.com/">
+  <meta property="og:title" content="LUXE Store - Calzado Premium">
+  <meta property="og:description" content="Descubre nuestra colección exclusiva de calzado premium. Calidad, estilo y confort en cada paso.">
+  <meta property="og:locale" content="es_CO">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="LUXE Store - Calzado Premium">
+  <meta name="twitter:description" content="Descubre nuestra colección exclusiva de calzado premium. Calidad, estilo y confort en cada paso.">
+
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -275,7 +295,7 @@
       </div>
     </div>
     <div class="pie-linea">
-      <p>© 2026 LUXE Store. Todos los derechos reservados.</p>
+      <p>&copy; <?php echo date('Y'); ?> LUXE Store. Todos los derechos reservados.</p>
     </div>
   </footer>
 
@@ -290,5 +310,32 @@
   <script src="js/cart.js"></script>
   <script src="js/orders.js"></script>
   <script src="js/app.js"></script>
+
+  <!-- ========== MODAL PRODUCTO ========== -->
+  <div class="modal-overlay" id="modal-overlay" onclick="cerrarModal()">
+    <div class="modal-contenido" onclick="event.stopPropagation()">
+      <button class="modal-cerrar" onclick="cerrarModal()">&times;</button>
+      <div class="modal-visual">
+        <img id="modal-imagen-producto" src="" alt="Producto" class="modal-imagen-producto">
+        <div class="modal-referencia">
+          <svg viewBox="0 0 200 150" class="modal-pie-svg">
+            <path d="M50 120 Q50 100 70 100 L130 100 Q150 100 150 120 L150 140 Q150 145 145 145 L55 145 Q50 145 50 140 Z" fill="#f0f0f5" stroke="#ccc" stroke-width="2"/>
+            <ellipse cx="100" cy="110" rx="40" ry="15" fill="#f0f0f5" stroke="#ccc" stroke-width="2"/>
+            <circle cx="85" cy="95" r="8" fill="#f0f0f5" stroke="#ccc" stroke-width="1"/>
+            <circle cx="115" cy="95" r="8" fill="#f0f0f5" stroke="#ccc" stroke-width="1"/>
+            <circle cx="100" cy="105" r="5" fill="#f0f0f5" stroke="#ccc" stroke-width="1"/>
+          </svg>
+        </div>
+      </div>
+      <div class="modal-info">
+        <h2 id="modal-nombre"></h2>
+        <p id="modal-descripcion"></p>
+        <div class="modal-precios">
+          <span id="modal-precio"></span>
+        </div>
+        <button class="btn-agregar-carrito" onclick="agregarAlCarritoDesdeModal()" data-producto-id="">Agregar al carrito</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

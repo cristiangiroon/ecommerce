@@ -153,58 +153,20 @@ async function verDetalle(productoId) {
   try {
     const datos = await peticionAPI(`${CONFIG.ENDPOINTS.productos}/${productoId}`);
     const p = datos.producto;
-    
+
     const tieneOferta = p.precio_oferta && parseFloat(p.precio_oferta) < parseFloat(p.precio);
-    
-    const tallas = p.tallas ? p.tallas.split(',') : [];
 
-    // Renderizar vista de detalle
-    const contenedor = document.getElementById('detalle-contenido');
-    contenedor.innerHTML = `
-      <img src="${p.imagen_url}" alt="${p.nombre}" class="detalle-imagen"
-           onerror="this.style.background='#f0f0f5'">
-      <div class="detalle-info">
-        <div class="producto-marca">${p.marca} | ${p.categoria_nombre || ''} | ${p.genero}</div>
-        <h1>${p.nombre}</h1>
-        <p class="detalle-descripcion">${p.descripcion}</p>
-        <div class="detalle-precios">
-          <span class="precio-actual">${formatearPrecio(tieneOferta ? p.precio_oferta : p.precio)}</span>
-          ${tieneOferta ? `<span class="precio-original">${formatearPrecio(p.precio)}</span>` : ''}
-        </div>
+    // Llenar el modal con los datos del producto
+    document.getElementById('modal-imagen-producto').src = p.imagen_url;
+    document.getElementById('modal-nombre').textContent = p.nombre;
+    document.getElementById('modal-descripcion').textContent = p.descripcion;
+    document.getElementById('modal-precio').textContent = formatearPrecio(tieneOferta ? p.precio_oferta : p.precio);
 
-        ${tallas.length > 0 ? `
-          <div class="selector-talla">
-            <label>Talla:</label>
-            <div class="tallas-grid">
-              ${tallas.map(t => `
-                <button class="talla-boton" onclick="seleccionarTalla(this, '${t.trim()}')">${t.trim()}</button>
-              `).join('')}
-            </div>
-          </div>
-        ` : ''}
+    // Setear el ID del producto en el botón
+    document.querySelector('.modal-info .btn-agregar-carrito').setAttribute('data-producto-id', productoId);
 
-        <div class="selector-cantidad">
-          <label>Cantidad:</label>
-          <div class="cantidad-control">
-            <button onclick="cambiarCantidadDetalle(-1)">-</button>
-            <span id="detalle-cantidad">1</span>
-            <button onclick="cambiarCantidadDetalle(1)">+</button>
-          </div>
-        </div>
-
-        <p class="stock-info ${p.stock < 10 ? 'bajo' : ''}">
-          ${p.stock > 0 ? `${p.stock} unidades disponibles` : 'Agotado'}
-        </p>
-
-        <div class="detalle-acciones">
-          <button class="btn-primario" onclick="agregarAlCarritoDetalle(${p.id})" ${p.stock === 0 ? 'disabled' : ''}>
-            ${p.stock > 0 ? 'Agregar al Carrito' : 'Agotado'}
-          </button>
-        </div>
-      </div>
-    `;
-
-    navegarA('detalle');
+    // Mostrar el modal
+    document.getElementById('modal-overlay').classList.add('visible');
   } catch (error) {
     mostrarToast('Error al cargar el producto', 'error');
   }
@@ -246,4 +208,22 @@ function cambiarCantidadDetalle(cambio) {
 function agregarAlCarritoDetalle(productoId) {
   const cantidad = parseInt(document.getElementById('detalle-cantidad').textContent);
   agregarAlCarrito(productoId, cantidad, tallaSeleccionada);
+}
+
+/**
+ * Cierra el modal de producto
+ */
+function cerrarModal() {
+  document.getElementById('modal-overlay').classList.remove('visible');
+}
+
+/**
+ * Agrega el producto del modal al carrito
+ */
+function agregarAlCarritoDesdeModal() {
+  const productoId = document.querySelector('.modal-info .btn-agregar-carrito').getAttribute('data-producto-id');
+  if (productoId) {
+    agregarAlCarrito(parseInt(productoId));
+    cerrarModal();
+  }
 }

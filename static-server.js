@@ -4,10 +4,14 @@ require('dotenv').config();
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'frontend')));
+app.use(express.static(path.join(__dirname, 'frontend'), {
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith('.php')) res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  }
+}));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend/index.html'));
+  res.type('html').sendFile(path.join(__dirname, 'frontend/index.php'));
 });
 
 const PUERTO = parseInt(process.env.PUERTO_FRONTEND) || 8080;
