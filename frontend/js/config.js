@@ -10,7 +10,7 @@
  */
 const CONFIG = {
   // URL base del backend (cambiar según entorno)
-  API_URL: 'https://ecommerce-bw50.onrender.com',
+  API_URL: 'https://backend-acun.onrender.com',
   
   // Endpoints del API REST
   ENDPOINTS: {
