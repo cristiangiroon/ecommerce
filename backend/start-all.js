@@ -1,5 +1,17 @@
-const { spawn } = require('child_process');
+const { spawn, execFileSync } = require('child_process');
 const path = require('path');
+
+// Inicializar BD antes de arrancar servicios
+try {
+  console.log('[DB] Inicializando base de datos...');
+  execFileSync('node', [path.join(__dirname, 'database/init.js')], {
+    stdio: 'inherit',
+    env: process.env,
+  });
+} catch {
+  console.error('[DB] Falló la inicialización. Abortando.');
+  process.exit(1);
+}
 
 const servicios = [
   { nombre: 'Auth',     ruta: 'services/auth-service/src/server.js' },

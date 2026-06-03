@@ -11,6 +11,7 @@ const poolBD = new Pool({
   database: process.env.BD_NOMBRE || 'luxe_store',
   user: process.env.BD_USUARIO || 'postgres',
   password: process.env.BD_CONTRASENA || 'postgres',
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
 });
 
 // Configuración centralizada compartida entre todos los microservicios
