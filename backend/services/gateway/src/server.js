@@ -14,7 +14,7 @@ app.use(cors());
  */
 const crearProxy = (puerto) =>
   createProxyMiddleware({
-    target: `http://localhost:${puerto}`, // URL del microservicio destino
+    target: `https://ecommerce-bw50.onrender.com`, // URL del microservicio destino
     changeOrigin: true, // Cambia el origen del host header
   });
 
