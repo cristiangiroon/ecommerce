@@ -24,7 +24,15 @@
   <meta name="twitter:title" content="LUXE Store - Calzado Premium">
   <meta name="twitter:description" content="Descubre nuestra colección exclusiva de calzado premium. Calidad, estilo y confort en cada paso.">
 
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/navegacion.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/productos.css">
+  <link rel="stylesheet" href="css/categorias.css">
+  <link rel="stylesheet" href="css/carrito.css">
+  <link rel="stylesheet" href="css/utils.css">
+  <link rel="stylesheet" href="css/efectos.css">
 </head>
 <body>
   <!-- ========== ENCABEZADO ========== -->
@@ -74,10 +82,42 @@
     <!-- ===== PÁGINA: INICIO ===== -->
     <section id="pagina-inicio">
       <div class="hero">
-        <div class="hero-contenido">
-          <h1>Encuentra tu estilo<br><span class="resaltado">perfecto</span></h1>
-          <p>Descubre nuestra colección exclusiva de calzado premium. Calidad, estilo y confort en cada paso.</p>
-          <button class="btn-primario" onclick="navegarA('catalogo')">Explorar Catálogo</button>
+        <div class="hero-carrusel">
+          <!-- Slide 1 -->
+          <div class="hero-slide hero-slide-1 activo">
+            <div class="hero-contenido">
+              <h1>Encuentra tu estilo<br><span class="resaltado">perfecto</span></h1>
+              <p>Descubre nuestra colección exclusiva de calzado premium. Calidad, estilo y confort en cada paso.</p>
+              <button class="btn-primario" onclick="navegarA('catalogo')">Explorar Catálogo</button>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="hero-slide hero-slide-2">
+            <div class="hero-contenido">
+              <h1>Ofertas<br><span class="resaltado">increíbles</span></h1>
+              <p>Hasta 50% de descuento en productos seleccionados. No te pierdas estas ofertas exclusivas.</p>
+              <button class="btn-primario" onclick="navegarA('catalogo')">Ver Ofertas</button>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="hero-slide hero-slide-3">
+            <div class="hero-contenido">
+              <h1>Nuevas<br><span class="resaltado">colecciones</span></h1>
+              <p>Las últimas tendencias en calzado ya están aquí. Renueva tu estilo con nuestras novedades.</p>
+              <button class="btn-primario" onclick="navegarA('catalogo')">Ver Novedades</button>
+            </div>
+          </div>
+        </div>
+        <!-- Flechas de navegación -->
+        <div class="hero-flechas">
+          <button class="flecha flecha-izq">&#8249;</button>
+          <button class="flecha flecha-der">&#8250;</button>
+        </div>
+        <!-- Indicadores -->
+        <div class="hero-indicadores">
+          <span class="indicador activo"></span>
+          <span class="indicador"></span>
+          <span class="indicador"></span>
         </div>
       </div>
 
@@ -105,6 +145,10 @@
     <!-- ===== PÁGINA: CATÁLOGO ===== -->
     <section id="pagina-catalogo" class="oculto">
       <div class="seccion contenedor">
+        <button class="btn-volver" onclick="navegarA('inicio')">
+          <span class="icono-volver">&#8592;</span>
+          Volver al Inicio
+        </button>
         <div class="seccion-titulo">
           <h2>Nuestro Catálogo</h2>
           <p>Explora toda nuestra colección</p>
@@ -144,6 +188,10 @@
     <!-- ===== PÁGINA: DETALLE PRODUCTO ===== -->
     <section id="pagina-detalle" class="oculto">
       <div class="seccion contenedor">
+        <button class="btn-volver" onclick="navegarA('catalogo')">
+          <span class="icono-volver">&#8592;</span>
+          Volver al Catálogo
+        </button>
         <div class="detalle-producto" id="detalle-contenido"></div>
       </div>
     </section>
@@ -151,6 +199,10 @@
     <!-- ===== PÁGINA: CARRITO ===== -->
     <section id="pagina-carrito" class="oculto">
       <div class="seccion contenedor">
+        <button class="btn-volver" onclick="navegarA('catalogo')">
+          <span class="icono-volver">&#8592;</span>
+          Seguir Comprando
+        </button>
         <div class="seccion-titulo">
           <h2>Tu Carrito</h2>
           <div class="linea-decorativa"></div>
@@ -162,6 +214,10 @@
     <!-- ===== PÁGINA: CHECKOUT ===== -->
     <section id="pagina-checkout" class="oculto">
       <div class="seccion contenedor">
+        <button class="btn-volver" onclick="navegarA('carrito')">
+          <span class="icono-volver">&#8592;</span>
+          Volver al Carrito
+        </button>
         <div class="seccion-titulo">
           <h2>Finalizar Compra</h2>
           <div class="linea-decorativa"></div>
@@ -197,6 +253,10 @@
     <!-- ===== PÁGINA: LOGIN ===== -->
     <section id="pagina-login" class="oculto">
       <div class="formulario-contenedor">
+        <button class="btn-volver" onclick="navegarA('inicio')">
+          <span class="icono-volver">&#8592;</span>
+          Volver al Inicio
+        </button>
         <div class="formulario-tarjeta">
           <h2>Iniciar Sesión</h2>
           <p class="formulario-subtitulo">Bienvenido de vuelta a LUXE Store</p>
@@ -221,6 +281,10 @@
     <!-- ===== PÁGINA: REGISTRO ===== -->
     <section id="pagina-registro" class="oculto">
       <div class="formulario-contenedor">
+        <button class="btn-volver" onclick="navegarA('login')">
+          <span class="icono-volver">&#8592;</span>
+          Volver al Login
+        </button>
         <div class="formulario-tarjeta">
           <h2>Crear Cuenta</h2>
           <p class="formulario-subtitulo">Únete a la experiencia LUXE</p>
@@ -257,6 +321,10 @@
     <!-- ===== PÁGINA: PEDIDOS ===== -->
     <section id="pagina-pedidos" class="oculto">
       <div class="seccion contenedor">
+        <button class="btn-volver" onclick="navegarA('inicio')">
+          <span class="icono-volver">&#8592;</span>
+          Volver al Inicio
+        </button>
         <div class="seccion-titulo">
           <h2>Mis Pedidos</h2>
           <p>Historial de tus compras</p>
@@ -303,12 +371,16 @@
   <button class="btn-volver-arriba" id="btn-volver-arriba" onclick="window.scrollTo({top:0, behavior:'smooth'})">&#8593;</button>
 
   <!-- ========== SCRIPTS ========== -->
+  <!-- Router debe cargarse PRIMERO -->
+  <script src="js/router.js"></script>
   <script src="js/config.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/products.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/orders.js"></script>
+  <script src="js/carousel.js"></script>
+  <script src="js/animaciones.js"></script>
   <script src="js/app.js"></script>
 
   <!-- ========== MODAL PRODUCTO ========== -->
@@ -337,5 +409,6 @@
       </div>
     </div>
   </div>
+  <!-- <script src="js/breadcrumbs.js"></script> --> <!-- Descomentar para activar breadcrumbs -->
 </body>
 </html>
