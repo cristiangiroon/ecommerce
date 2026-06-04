@@ -91,9 +91,7 @@ async function filtrarProductos() {
 }
 
 function filtrarPorCategoria(categoriaId) {
-  navegarA('catalogo');
-  document.getElementById('filtro-categoria').value = categoriaId;
-  filtrarProductos();
+  window.location.href = `index.php?page=catalogo&categoria=${categoriaId}`;
 }
 
 /**
@@ -149,6 +147,13 @@ function renderizarProductos(productos, contenedorId) {
 
  */
 async function verDetalle(productoId) {
+  // Si estamos en la página de catálogo o inicio, redirigir a detalle
+  const currentPage = new URLSearchParams(window.location.search).get('page');
+  if (currentPage !== 'detalle') {
+    window.location.href = `index.php?page=detalle&id=${productoId}`;
+    return;
+  }
+
   try {
     const datos = await peticionAPI(`${CONFIG.ENDPOINTS.productos}/${productoId}`);
     const p = datos.producto;
@@ -164,8 +169,26 @@ async function verDetalle(productoId) {
     // Setear el ID del producto en el botón
     document.querySelector('.modal-info .btn-agregar-carrito').setAttribute('data-producto-id', productoId);
 
-    // Mostrar el modal
-    document.getElementById('modal-overlay').classList.add('visible');
+        <div class="selector-cantidad">
+          <label>Cantidad:</label>
+          <div class="cantidad-control">
+            <button onclick="cambiarCantidadDetalle(-1)">-</button>
+            <span id="detalle-cantidad">1</span>
+            <button onclick="cambiarCantidadDetalle(1)">+</button>
+          </div>
+        </div>
+
+        <p class="stock-info ${p.stock < 10 ? 'bajo' : ''}">
+          ${p.stock > 0 ? `${p.stock} unidades disponibles` : 'Agotado'}
+        </p>
+
+        <div class="detalle-acciones">
+          <button class="btn-primario" onclick="agregarAlCarritoDetalle(${p.id})" ${p.stock === 0 ? 'disabled' : ''}>
+            ${p.stock > 0 ? 'Agregar al Carrito' : 'Agotado'}
+          </button>
+        </div>
+      </div>
+    `;
   } catch (error) {
     mostrarToast('Error al cargar el producto', 'error');
   }

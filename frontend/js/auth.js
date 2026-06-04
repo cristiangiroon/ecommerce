@@ -22,7 +22,7 @@ async function iniciarSesion(evento) {
     guardarSesion(datos.token, datos.usuario);
     actualizarUIUsuario();
     mostrarToast(`Bienvenido, ${datos.usuario.nombre}`, 'exito');
-    navegarA('inicio');
+    window.location.href = 'index.php?page=inicio';
     cargarCarritoBadge();
   } catch (error) {
     mostrarToast(error.message, 'error');
@@ -56,7 +56,7 @@ async function registrarUsuario(evento) {
     guardarSesion(datos.token, datos.usuario);
     actualizarUIUsuario();
     mostrarToast('Cuenta creada exitosamente', 'exito');
-    navegarA('inicio');
+    window.location.href = 'index.php?page=inicio';
   } catch (error) {
     mostrarToast(error.message, 'error');
   }
@@ -81,10 +81,10 @@ function actualizarUIUsuario() {
     };
   } else {
     enlaceMovil.innerHTML = `
-      <a href="#" onclick="navegarA('login'); toggleMenuMovil()">Iniciar Sesión</a>
+      <a href="index.php?page=login" onclick="toggleMenuMovil()">Iniciar Sesión</a>
     `;
     btnUsuario.title = 'Iniciar Sesión';
-    btnUsuario.onclick = () => navegarA('login');
+    btnUsuario.onclick = () => window.location.href = 'index.php?page=login';
   }
 }
 
@@ -95,7 +95,7 @@ function actualizarUIUsuario() {
 function requiereAuth(paginaDestino) {
   if (!estaAutenticado()) {
     mostrarToast('Inicia sesión para continuar', 'info');
-    navegarA('login');
+    window.location.href = 'index.php?page=login';
     return false;
   }
   return true;
